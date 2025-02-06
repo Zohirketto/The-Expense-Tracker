@@ -34,7 +34,7 @@ export default function TransactionList() {
               <tr
                 key={transaction.id}
                 className={`border-b ${
-                  transaction.type === "Expense" ? "bg-red-50" : "bg-green-50"
+                  transaction.type === "Expense" ? "bg-red-400" : "bg-green-400"
                 }`}
               >
                 <td className="py-3 px-4 text-sm sm:text-base">{transaction.amount}</td>
