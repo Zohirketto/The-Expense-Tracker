@@ -18,8 +18,8 @@ export default function Balance() {
       <header className="bg-blue-700 p-6 text-white text-3xl font-bold">
         Expense Tracker Dashboard
       </header>
-      <div className="flex">
-        <aside className="w-1/5 bg-blue-800 text-white p-6">
+      <div className="flex flex-wrap">
+        <aside className="w-full sm:w-1/4 lg:w-1/5 bg-blue-800 text-white p-6">
           <nav>
             <ul>
               <li className="mb-6">
@@ -30,8 +30,8 @@ export default function Balance() {
             </ul>
           </nav>
         </aside>
-        <main className="flex-1 p-10">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <main className="flex-1 p-6 sm:p-10">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
             <div className="bg-white bg-opacity-80 backdrop-blur-lg p-10 rounded-xl shadow-xl flex flex-col items-center">
               <h2 className="text-2xl font-bold text-gray-700">Income</h2>
               <p className="text-green-600 text-4xl font-semibold mt-6">

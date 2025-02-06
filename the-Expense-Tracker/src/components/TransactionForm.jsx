@@ -12,6 +12,7 @@ export default function TransactionForm() {
   });
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  
   const handle = () => {
     if (!form.amount || !form.category || !form.type || !form.date) {
       alert("please fill the input");
@@ -28,14 +29,14 @@ export default function TransactionForm() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-white">
-      <div className="w-full max-w-3xl bg-white rounded-xl shadow-xl p-12">
-        <h1 className="text-4xl font-bold text-center mb-8 text-gray-800">
+    <div className="min-h-screen flex items-center justify-center bg-white p-4">
+      <div className="w-full max-w-lg sm:max-w-xl bg-white rounded-xl shadow-xl p-8 sm:p-12">
+        <h1 className="text-3xl sm:text-4xl font-bold text-center mb-8 text-gray-800">
           Add Transaction
         </h1>
         <div className="space-y-6">
           <div>
-            <label className="block text-gray-700 font-semibold text-xl mb-2">
+            <label className="block text-gray-700 font-semibold text-lg sm:text-xl mb-2">
               Amount
             </label>
             <input
@@ -47,11 +48,11 @@ export default function TransactionForm() {
                   amount: Number(e.target.value),
                 }))
               }
-              className="w-full px-6 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-400 text-lg"
+              className="w-full px-6 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-400 text-lg sm:text-xl"
             />
           </div>
           <div>
-            <label className="block text-gray-700 font-semibold text-xl mb-2">
+            <label className="block text-gray-700 font-semibold text-lg sm:text-xl mb-2">
               Category
             </label>
             <select
@@ -59,7 +60,7 @@ export default function TransactionForm() {
               onChange={(e) =>
                 setForm((prev) => ({ ...prev, category: e.target.value }))
               }
-              className="w-full px-6 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-400 text-lg"
+              className="w-full px-6 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-400 text-lg sm:text-xl"
             >
               <option value="">Select Category</option>
               <option value="Food">Food</option>
@@ -69,7 +70,7 @@ export default function TransactionForm() {
             </select>
           </div>
           <div>
-            <label className="block text-gray-700 font-semibold text-xl mb-2">
+            <label className="block text-gray-700 font-semibold text-lg sm:text-xl mb-2">
               Type
             </label>
             <select
@@ -77,7 +78,7 @@ export default function TransactionForm() {
               onChange={(e) =>
                 setForm((prev) => ({ ...prev, type: e.target.value }))
               }
-              className="w-full px-6 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-400 text-lg"
+              className="w-full px-6 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-400 text-lg sm:text-xl"
             >
               <option value="">Select Type</option>
               <option value="Income">Income</option>
@@ -85,7 +86,7 @@ export default function TransactionForm() {
             </select>
           </div>
           <div>
-            <label className="block text-gray-700 font-semibold text-xl mb-2">
+            <label className="block text-gray-700 font-semibold text-lg sm:text-xl mb-2">
               Date
             </label>
             <input
@@ -94,12 +95,12 @@ export default function TransactionForm() {
               onChange={(e) =>
                 setForm((prev) => ({ ...prev, date: e.target.value }))
               }
-              className="w-full px-6 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-400 text-lg"
+              className="w-full px-6 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-400 text-lg sm:text-xl"
             />
           </div>
           <button
             onClick={handle}
-            className="w-full py-3 mt-6 bg-purple-600 text-white font-bold rounded-md hover:bg-purple-700 transition duration-200 text-xl"
+            className="w-full py-3 mt-6 bg-purple-600 text-white font-bold rounded-md hover:bg-purple-700 transition duration-200 text-lg sm:text-xl"
           >
             Add Transaction
           </button>
