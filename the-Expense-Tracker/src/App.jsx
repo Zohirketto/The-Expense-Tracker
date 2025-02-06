@@ -12,11 +12,11 @@ function App() {
 
   return (
     <>
+<div className="w-full max-w-6xl mx-auto p-4 sm:p-6 md:p-8 lg:p-10">
+  <Balance />
+</div>
 
-    <div>
-         <Balance/>
-    
-    </div>
+
 
 
     </>
