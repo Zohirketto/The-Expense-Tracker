@@ -4,6 +4,8 @@ import viteLogo from '/vite.svg'
 import TransactionForm from './components/TransactionForm'
 import './App.css'
 import TransactionList from './components/TransactionList'
+import Filteri from './components/Filter'
+import Balance from './components/Balance'
 
 function App() {
   
@@ -12,9 +14,8 @@ function App() {
     <>
 
     <div>
-     
-      <TransactionForm/>
-      <TransactionList/>
+         <Balance/>
+    
     </div>
 
 

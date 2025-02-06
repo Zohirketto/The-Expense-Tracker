@@ -1,73 +1,110 @@
 import { useState } from "react";
 import { Addtransaction } from "../features/TransactionsSlice";
-import { useDispatch } from 'react-redux';
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 export default function TransactionForm() {
   const [form, setForm] = useState({
-    amount: 0,
+    amount: "",
     category: "",
     type: "",
     date: new Date().toISOString().split("T")[0],
   });
-
-  const Dispatch = useDispatch();
-
-  const Handle = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const handle = () => {
     if (!form.amount || !form.category || !form.type || !form.date) {
       alert("please fill the input");
     } else {
-      Dispatch(Addtransaction(form));
+      dispatch(Addtransaction(form));
       setForm({
-        amount: 0,
+        amount: "",
         category: "",
         type: "",
         date: new Date().toISOString().split("T")[0],
       });
+      navigate("/");
     }
   };
 
   return (
-    <div className="max-w-xl mx-auto p-6 bg-white border border-gray-300 rounded-lg shadow-md">
-      <label className="block text-sm font-medium text-gray-700 mb-2">Add Amount:</label>
-      <input
-        type="number"
-        className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-        value={form.amount}
-        onChange={(e) => setForm((prevForm) => ({ ...prevForm, amount: Number(e.target.value) }))}
-      />
-      <label className="block text-sm font-medium text-gray-700 mt-4">Choose Category:</label>
-      <select
-        className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-        value={form.category}
-        onChange={(e) => setForm((prevForm) => ({ ...prevForm, category: e.target.value }))}
-      >
-        <option>Food</option>
-        <option>Entertainment</option>
-        <option>Salary</option>
-        <option>Etc</option>
-      </select>
-      <label className="block text-sm font-medium text-gray-700 mt-4">Type:</label>
-      <select
-        className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-        value={form.type}
-        onChange={(e) => setForm((prevForm) => ({ ...prevForm, type: e.target.value }))}
-      >
-        <option>Income</option>
-        <option>Expense</option>
-      </select>
-      <label className="block text-sm font-medium text-gray-700 mt-4">Date:</label>
-      <input
-        type="date"
-        className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-        value={form.date}
-        onChange={(e) => setForm((prevForm) => ({ ...prevForm, date: e.target.value }))}
-      />
-      <button
-        onClick={Handle}
-        className="mt-6 w-full p-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
-      >
-        Add Transaction
-      </button>
+    <div className="min-h-screen flex items-center justify-center bg-white">
+      <div className="w-full max-w-3xl bg-white rounded-xl shadow-xl p-12">
+        <h1 className="text-4xl font-bold text-center mb-8 text-gray-800">
+          Add Transaction
+        </h1>
+        <div className="space-y-6">
+          <div>
+            <label className="block text-gray-700 font-semibold text-xl mb-2">
+              Amount
+            </label>
+            <input
+              type="number"
+              value={form.amount}
+              onChange={(e) =>
+                setForm((prev) => ({
+                  ...prev,
+                  amount: Number(e.target.value),
+                }))
+              }
+              className="w-full px-6 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-400 text-lg"
+            />
+          </div>
+          <div>
+            <label className="block text-gray-700 font-semibold text-xl mb-2">
+              Category
+            </label>
+            <select
+              value={form.category}
+              onChange={(e) =>
+                setForm((prev) => ({ ...prev, category: e.target.value }))
+              }
+              className="w-full px-6 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-400 text-lg"
+            >
+              <option value="">Select Category</option>
+              <option value="Food">Food</option>
+              <option value="Entertainment">Entertainment</option>
+              <option value="Salary">Salary</option>
+              <option value="Etc">Etc</option>
+            </select>
+          </div>
+          <div>
+            <label className="block text-gray-700 font-semibold text-xl mb-2">
+              Type
+            </label>
+            <select
+              value={form.type}
+              onChange={(e) =>
+                setForm((prev) => ({ ...prev, type: e.target.value }))
+              }
+              className="w-full px-6 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-400 text-lg"
+            >
+              <option value="">Select Type</option>
+              <option value="Income">Income</option>
+              <option value="Expense">Expense</option>
+            </select>
+          </div>
+          <div>
+            <label className="block text-gray-700 font-semibold text-xl mb-2">
+              Date
+            </label>
+            <input
+              type="date"
+              value={form.date}
+              onChange={(e) =>
+                setForm((prev) => ({ ...prev, date: e.target.value }))
+              }
+              className="w-full px-6 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-400 text-lg"
+            />
+          </div>
+          <button
+            onClick={handle}
+            className="w-full py-3 mt-6 bg-purple-600 text-white font-bold rounded-md hover:bg-purple-700 transition duration-200 text-xl"
+          >
+            Add Transaction
+          </button>
+        </div>
+      </div>
     </div>
   );
 }
